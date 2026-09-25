@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-site-verification" content="fitg48xFFmUofQhy3PbAK393NBgV88qtz1DARkHeATg" />
+
 <title>Mama Qadeer Memorial Library</title>
 
 <style>
@@ -85,7 +86,6 @@ nav a{
   color:white;
   text-decoration:none;
   font-size:14px;
-  opacity:.9;
 }
 
 nav a:hover{
@@ -94,7 +94,7 @@ nav a:hover{
 
 .login-btn{
   border:1px solid #f1c75b;
-  color:#f1c75b;
+  color:#f1c75b!important;
   padding:9px 16px;
   border-radius:9px;
 }
@@ -225,7 +225,7 @@ nav a:hover{
   margin-top:10px;
 }
 
-/* ================= SEARCH ================= */
+/* ================= LIBRARY ================= */
 
 .library-top{
   display:flex;
@@ -300,7 +300,6 @@ nav a:hover{
 
 .book:hover{
   transform:translateY(-5px);
-  box-shadow:0 12px 30px rgba(50,16,79,.14);
 }
 
 .book-cover{
@@ -470,6 +469,11 @@ nav a:hover{
   margin-bottom:12px;
   border:1px solid #ddd;
   border-radius:9px;
+  outline:none;
+}
+
+.input:focus{
+  border-color:#32104f;
 }
 
 .full-btn{
@@ -479,6 +483,129 @@ nav a:hover{
   border-radius:9px;
   background:#32104f;
   color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.full-btn:hover{
+  background:#4b176c;
+}
+
+/* ================= ADMIN DASHBOARD ================= */
+
+.admin-section{
+  background:#f0edf4;
+}
+
+.admin-header{
+  background:linear-gradient(135deg,#240936,#4b176c);
+  color:white;
+  padding:30px;
+  border-radius:20px;
+  margin-bottom:25px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.admin-header h2{
+  font-size:28px;
+}
+
+.admin-header p{
+  margin-top:6px;
+  color:#ddd1e6;
+  font-size:14px;
+}
+
+.admin-badge{
+  background:#f1c75b;
+  color:#32104f;
+  padding:10px 15px;
+  border-radius:10px;
+  font-weight:bold;
+  font-size:13px;
+}
+
+.admin-stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  margin-bottom:25px;
+}
+
+.admin-stat{
+  background:white;
+  border-radius:16px;
+  padding:23px;
+  border:1px solid #eee;
+}
+
+.admin-stat-icon{
+  font-size:25px;
+  margin-bottom:12px;
+}
+
+.admin-stat h3{
+  font-size:27px;
+}
+
+.admin-stat p{
+  color:#777;
+  font-size:13px;
+  margin-top:5px;
+}
+
+.admin-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.admin-card{
+  background:white;
+  padding:25px;
+  border-radius:16px;
+  border:1px solid #eee;
+  transition:.2s;
+}
+
+.admin-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 25px rgba(50,16,79,.08);
+}
+
+.admin-card-icon{
+  width:50px;
+  height:50px;
+  border-radius:13px;
+  background:#f5edfa;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:23px;
+  margin-bottom:15px;
+}
+
+.admin-card h3{
+  margin-bottom:7px;
+}
+
+.admin-card p{
+  color:#777;
+  line-height:1.6;
+  font-size:13px;
+}
+
+.admin-card button{
+  margin-top:18px;
+  padding:10px 15px;
+  border:0;
+  border-radius:8px;
+  background:#32104f;
+  color:white;
+  cursor:pointer;
   font-weight:bold;
 }
 
@@ -542,6 +669,17 @@ footer a{
   border-top:1px solid rgba(255,255,255,.1);
   color:#aaa;
   font-size:13px;
+}
+
+.made-by{
+  text-align:center;
+  margin-top:10px;
+  color:#f1c75b;
+  font-size:13px;
+}
+
+.made-by strong{
+  color:white;
 }
 
 /* ================= MODAL ================= */
@@ -611,6 +749,14 @@ footer a{
 
   .features{
     grid-template-columns:1fr;
+  }
+
+  .admin-stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .admin-grid{
+    grid-template-columns:1fr 1fr;
   }
 
   .hero h2{
@@ -687,6 +833,32 @@ footer a{
     margin-bottom:15px;
   }
 
+  .admin-header{
+    display:block;
+  }
+
+  .admin-badge{
+    display:inline-block;
+    margin-top:15px;
+  }
+
+  .admin-stats{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .admin-stat{
+    padding:17px;
+  }
+
+  .admin-stat h3{
+    font-size:23px;
+  }
+
+  .admin-grid{
+    grid-template-columns:1fr;
+  }
+
   .footer-inner{
     grid-template-columns:1fr;
   }
@@ -724,594 +896,983 @@ footer a{
 
 <body>
 
-<!-- HEADER -->
+<!-- ================= HEADER ================= -->
 
 <header>
-  <div class="header-inner">
 
-    <div class="logo">
-      <div class="logo-icon">📚</div>
+<div class="header-inner">
 
-      <div class="logo-text">
-        <h1>MAMA QADEER MEMORIAL LIBRARY</h1>
-        <p>Baloch Students Council UOL</p>
-      </div>
-    </div>
+<div class="logo">
 
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#library">Library</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-      <a href="#login" class="login-btn">Login</a>
-    </nav>
+<div class="logo-icon">
+📚
+</div>
 
-  </div>
+<div class="logo-text">
+
+<h1>MAMA QADEER MEMORIAL LIBRARY</h1>
+
+<p>Baloch Students Council UOL</p>
+
+</div>
+
+</div>
+
+<nav>
+
+<a href="#home">Home</a>
+
+<a href="#library">Library</a>
+
+<a href="#about">About</a>
+
+<a href="#contact">Contact</a>
+
+<a href="#login" class="login-btn">
+Login
+</a>
+
+</nav>
+
+</div>
+
 </header>
 
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 
 <section class="hero" id="home">
 
-  <div class="hero-inner">
+<div class="hero-inner">
 
-    <div>
+<div>
 
-      <h2>
-        Knowledge is for <span>Everyone.</span>
-      </h2>
+<h2>
+Knowledge is for <span>Everyone.</span>
+</h2>
 
-      <p>
-        Mama Qadeer Memorial Library is a student-focused initiative
-        created to provide easy access to books and educational
-        resources for students.
-      </p>
+<p>
+Mama Qadeer Memorial Library is a student-focused initiative
+created to provide easy access to books and educational
+resources for students.
+</p>
 
-      <div class="hero-buttons">
-        <a href="#library" class="primary-btn">
-          Explore Library
-        </a>
+<div class="hero-buttons">
 
-        <a href="#about" class="secondary-btn">
-          Learn More
-        </a>
-      </div>
+<a href="#library" class="primary-btn">
+Explore Library
+</a>
 
-    </div>
+<a href="#about" class="secondary-btn">
+Learn More
+</a>
 
-    <div class="hero-card">
-
-      <div class="book-illustration">
-        📖
-      </div>
-
-      <h3>
-        A Library for Students
-      </h3>
-
-      <p>
-        Read. Learn. Share. Grow.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- LIBRARY -->
-
-<section class="section" id="library">
-
-  <div class="section-inner">
-
-    <div class="section-title">
-
-      <span>Our Collection</span>
-
-      <h2>Explore the Library</h2>
-
-      <p>
-        Find books and educational resources easily.
-      </p>
-
-    </div>
-
-
-    <div class="library-top">
-
-      <div class="search-box">
-
-        <span class="search-icon">🔍</span>
-
-        <input
-          type="text"
-          id="search"
-          placeholder="Search books by title, author or category..."
-        >
-
-      </div>
-
-    </div>
-
-
-    <div class="categories">
-
-      <div class="category active" onclick="filterCategory('All',this)">
-        All
-      </div>
-
-      <div class="category" onclick="filterCategory('Economics',this)">
-        Economics
-      </div>
-
-      <div class="category" onclick="filterCategory('Business',this)">
-        Business
-      </div>
-
-      <div class="category" onclick="filterCategory('Finance',this)">
-        Finance
-      </div>
-
-      <div class="category" onclick="filterCategory('Literature',this)">
-        Literature
-      </div>
-
-      <div class="category" onclick="filterCategory('Other',this)">
-        Other
-      </div>
-
-    </div>
-
-
-    <div class="books" id="books"></div>
-
-  </div>
-
-</section>
-
-
-<!-- FEATURES -->
-
-<section class="section">
-
-  <div class="section-inner">
-
-    <div class="section-title">
-
-      <span>Library Services</span>
-
-      <h2>Everything in One Place</h2>
-
-    </div>
-
-
-    <div class="features">
-
-      <div class="feature">
-
-        <div class="feature-icon">📚</div>
-
-        <h3>Book Collection</h3>
-
-        <p>
-          Explore educational books from different subjects
-          and categories.
-        </p>
-
-      </div>
-
-
-      <div class="feature">
-
-        <div class="feature-icon">🔎</div>
-
-        <h3>Easy Search</h3>
-
-        <p>
-          Quickly find books using title, author or category.
-        </p>
-
-      </div>
-
-
-      <div class="feature">
-
-        <div class="feature-icon">📝</div>
-
-        <h3>Book Requests</h3>
-
-        <p>
-          Students can request books they want to read.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ABOUT -->
-
-<section class="section about" id="about">
-
-  <div class="section-inner about-grid">
-
-    <div>
-
-      <h2>About Mama Qadeer Memorial Library</h2>
-
-      <p>
-        Mama Qadeer Memorial Library is a student-focused
-        initiative associated with Baloch Students Council
-        University of Lahore.
-      </p>
-
-      <br>
-
-      <p>
-        The purpose of this initiative is to encourage reading,
-        learning and knowledge sharing among students and to
-        make educational resources easier to access.
-      </p>
-
-    </div>
-
-
-    <div class="about-box">
-
-      <div class="stat">
-        <span>Students</span>
-        <strong>100+</strong>
-      </div>
-
-      <div class="stat">
-        <span>Book Categories</span>
-        <strong>Multiple</strong>
-      </div>
-
-      <div class="stat">
-        <span>Access</span>
-        <strong>Student Focused</strong>
-      </div>
-
-      <div class="stat">
-        <span>Cost</span>
-        <strong>Free</strong>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- LOGIN DESIGN -->
-
-<section class="section" id="login">
-
-  <div class="section-inner">
-
-    <div class="section-title">
-
-      <span>Members Area</span>
-
-      <h2>Access Your Account</h2>
-
-      <p>
-        Student and administrator access will be connected later.
-      </p>
-
-    </div>
-
-
-    <div class="login-area">
-
-      <div class="login-card">
-
-        <h3>🎓 Student Login</h3>
-
-        <p>
-          Login to request books and manage your library activity.
-        </p>
-
-        <input
-          class="input"
-          type="email"
-          placeholder="Student email"
-        >
-
-        <input
-          class="input"
-          type="password"
-          placeholder="Password"
-        >
-
-        <button class="full-btn" onclick="demoLogin()">
-          Login
-        </button>
-
-      </div>
-
-
-      <div class="login-card">
-
-        <h3>🛠️ Admin Panel</h3>
-
-        <p>
-          Library administrators will manage books and requests here.
-        </p>
-
-        <input
-          class="input"
-          type="email"
-          placeholder="Admin email"
-        >
-
-        <input
-          class="input"
-          type="password"
-          placeholder="Password"
-        >
-
-        <button class="full-btn" onclick="demoLogin()">
-          Admin Login
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- CONTACT -->
-
-<section class="section" id="contact">
-
-  <div class="section-inner">
-
-    <div class="section-title">
-
-      <span>Get in Touch</span>
-
-      <h2>Contact Library</h2>
-
-    </div>
-
-
-    <div class="contact">
-
-      <div class="contact-card">
-
-        <h3>📚 Mama Qadeer Memorial Library</h3>
-
-        <div class="contact-item">
-          <strong>Organization</strong>
-          <p>Baloch Students Council UOL</p>
-        </div>
-
-        <div class="contact-item">
-          <strong>Location</strong>
-          <p>University of Lahore</p>
-        </div>
-
-        <div class="contact-item">
-          <strong>Purpose</strong>
-          <p>Education and knowledge sharing</p>
-        </div>
-
-      </div>
-
-
-      <div class="contact-card">
-
-        <h3>Send a Message</h3>
-
-        <br>
-
-        <input
-          class="input"
-          placeholder="Your name"
-        >
-
-        <input
-          class="input"
-          type="email"
-          placeholder="Your email"
-        >
-
-        <textarea
-          class="input"
-          rows="5"
-          placeholder="Your message"
-        ></textarea>
-
-        <button
-          class="full-btn"
-          onclick="alert('Contact system will be connected later.')"
-        >
-          Send Message
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-  <div class="footer-inner">
-
-    <div>
-
-      <h3>Mama Qadeer Memorial Library</h3>
-
-      <p>
-        A student-focused library initiative dedicated to
-        education, reading and knowledge sharing.
-      </p>
-
-    </div>
-
-
-    <div>
-
-      <h3>Quick Links</h3>
-
-      <p>
-        <a href="#home">Home</a>
-      </p>
-
-      <p>
-        <a href="#library">Library</a>
-      </p>
-
-      <p>
-        <a href="#about">About</a>
-      </p>
-
-      <p>
-        <a href="#contact">Contact</a>
-      </p>
-
-    </div>
-
-
-    <div>
-
-      <h3>Library</h3>
-
-      <p>Books</p>
-      <p>Book Requests</p>
-      <p>Student Login</p>
-      <p>Admin Panel</p>
-
-    </div>
-
-  </div>
-
-
-  <div class="copyright">
-
-    © 2026 Mama Qadeer Memorial Library · Baloch Students Council UOL
-
-  </div>
-
-</footer>
-
-
-<!-- MOBILE NAV -->
-
-<div class="mobile-nav">
-
-  <a href="#home">
-    <span>🏠</span>
-    Home
-  </a>
-
-  <a href="#library">
-    <span>📚</span>
-    Library
-  </a>
-
-  <a href="#about">
-    <span>ℹ️</span>
-    About
-  </a>
-
-  <a href="#login">
-    <span>👤</span>
-    Login
-  </a>
+</div>
 
 </div>
 
 
-<!-- BOOK DETAILS MODAL -->
+<div class="hero-card">
 
-<div class="modal" id="bookModal">
+<div class="book-illustration">
+📖
+</div>
 
-  <div class="modal-box">
+<h3>
+A Library for Students
+</h3>
 
-    <div class="close" onclick="closeModal()">×</div>
+<p>
+Read. Learn. Share. Grow.
+</p>
 
-    <h2 id="modalTitle">
-      Book Title
-    </h2>
+</div>
 
-    <p id="modalAuthor"></p>
+</div>
 
-    <br>
+</section>
 
-    <p id="modalCategory"></p>
 
-    <br>
+<!-- ================= LIBRARY ================= -->
 
-    <p id="modalDescription"></p>
+<section class="section" id="library">
 
-    <br>
+<div class="section-inner">
 
-    <button class="full-btn" onclick="requestDemo()">
-      Request This Book
-    </button>
+<div class="section-title">
 
-  </div>
+<span>Our Collection</span>
+
+<h2>Explore the Library</h2>
+
+<p>
+Find books and educational resources easily.
+</p>
+
+</div>
+
+
+<div class="library-top">
+
+<div class="search-box">
+
+<span class="search-icon">🔍</span>
+
+<input
+type="text"
+id="search"
+placeholder="Search books by title, author or category..."
+>
+
+</div>
+
+</div>
+
+
+<div class="categories">
+
+<div class="category active"
+onclick="filterCategory('All',this)">
+All
+</div>
+
+<div class="category"
+onclick="filterCategory('Economics',this)">
+Economics
+</div>
+
+<div class="category"
+onclick="filterCategory('Business',this)">
+Business
+</div>
+
+<div class="category"
+onclick="filterCategory('Finance',this)">
+Finance
+</div>
+
+<div class="category"
+onclick="filterCategory('Literature',this)">
+Literature
+</div>
+
+<div class="category"
+onclick="filterCategory('Other',this)">
+Other
+</div>
+
+</div>
+
+
+<div class="books" id="books"></div>
+
+</div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="section">
+
+<div class="section-inner">
+
+<div class="section-title">
+
+<span>Library Services</span>
+
+<h2>Everything in One Place</h2>
+
+</div>
+
+
+<div class="features">
+
+<div class="feature">
+
+<div class="feature-icon">
+📚
+</div>
+
+<h3>Book Collection</h3>
+
+<p>
+Explore educational books from different subjects
+and categories.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+🔎
+</div>
+
+<h3>Easy Search</h3>
+
+<p>
+Quickly find books using title, author or category.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+📝
+</div>
+
+<h3>Book Requests</h3>
+
+<p>
+Students can request books they want to read.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="section about" id="about">
+
+<div class="section-inner about-grid">
+
+<div>
+
+<h2>
+About Mama Qadeer Memorial Library
+</h2>
+
+<p>
+Mama Qadeer Memorial Library is a student-focused
+initiative associated with Baloch Students Council
+University of Lahore.
+</p>
+
+<br>
+
+<p>
+The purpose of this initiative is to encourage reading,
+learning and knowledge sharing among students and to
+make educational resources easier to access.
+</p>
+
+</div>
+
+
+<div class="about-box">
+
+<div class="stat">
+
+<span>Students</span>
+
+<strong>100+</strong>
+
+</div>
+
+<div class="stat">
+
+<span>Book Categories</span>
+
+<strong>Multiple</strong>
+
+</div>
+
+<div class="stat">
+
+<span>Access</span>
+
+<strong>Student Focused</strong>
+
+</div>
+
+<div class="stat">
+
+<span>Cost</span>
+
+<strong>Free</strong>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= LOGIN ================= -->
+
+<section class="section" id="login">
+
+<div class="section-inner">
+
+<div class="section-title">
+
+<span>Members Area</span>
+
+<h2>Access Your Account</h2>
+
+<p>
+Student and administrator access.
+</p>
+
+</div>
+
+
+<div class="login-area">
+
+
+<div class="login-card">
+
+<h3>
+🎓 Student Login
+</h3>
+
+<p>
+Login to request books and manage your library activity.
+</p>
+
+<input
+class="input"
+type="email"
+placeholder="Student email"
+>
+
+<input
+class="input"
+type="password"
+placeholder="Password"
+>
+
+<button
+class="full-btn"
+onclick="studentLogin()">
+
+Login
+
+</button>
+
+</div>
+
+
+<div class="login-card">
+
+<h3>
+🛠️ Admin Panel
+</h3>
+
+<p>
+Library administrators can manage the library from here.
+</p>
+
+<input
+class="input"
+id="adminEmail"
+type="email"
+placeholder="Admin email"
+>
+
+<input
+class="input"
+id="adminPassword"
+type="password"
+placeholder="Password"
+>
+
+<button
+class="full-btn"
+onclick="openAdminPanel()">
+
+Admin Login
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= ADMIN DASHBOARD ================= -->
+
+<section
+class="section admin-section"
+id="adminDashboard"
+style="display:none;">
+
+<div class="section-inner">
+
+<div class="admin-header">
+
+<div>
+
+<h2>
+🛠️ Admin Dashboard
+</h2>
+
+<p>
+Mama Qadeer Memorial Library Management Panel
+</p>
+
+</div>
+
+<div class="admin-badge">
+ADMIN MODE
+</div>
+
+</div>
+
+
+<!-- ADMIN STATS -->
+
+<div class="admin-stats">
+
+<div class="admin-stat">
+
+<div class="admin-stat-icon">
+📚
+</div>
+
+<h3 id="totalBooks">
+4
+</h3>
+
+<p>
+Total Books
+</p>
+
+</div>
+
+
+<div class="admin-stat">
+
+<div class="admin-stat-icon">
+👥
+</div>
+
+<h3>
+100+
+</h3>
+
+<p>
+Students
+</p>
+
+</div>
+
+
+<div class="admin-stat">
+
+<div class="admin-stat-icon">
+📝
+</div>
+
+<h3>
+0
+</h3>
+
+<p>
+Pending Requests
+</p>
+
+</div>
+
+
+<div class="admin-stat">
+
+<div class="admin-stat-icon">
+📖
+</div>
+
+<h3>
+0
+</h3>
+
+<p>
+Books Borrowed
+</p>
+
+</div>
+
+</div>
+
+
+<!-- ADMIN CARDS -->
+
+<div class="admin-grid">
+
+
+<div class="admin-card">
+
+<div class="admin-card-icon">
+➕
+</div>
+
+<h3>
+Add New Book
+</h3>
+
+<p>
+Add a new book to the library collection.
+</p>
+
+<button onclick="adminMessage('Add Book')">
+Add Book
+</button>
+
+</div>
+
+
+<div class="admin-card">
+
+<div class="admin-card-icon">
+📚
+</div>
+
+<h3>
+Manage Books
+</h3>
+
+<p>
+View and manage books in the library collection.
+</p>
+
+<button onclick="adminMessage('Manage Books')">
+Manage Books
+</button>
+
+</div>
+
+
+<div class="admin-card">
+
+<div class="admin-card-icon">
+📄
+</div>
+
+<h3>
+Book PDFs
+</h3>
+
+<p>
+Manage digital book files and educational PDFs.
+</p>
+
+<button onclick="adminMessage('Book PDFs')">
+Manage PDFs
+</button>
+
+</div>
+
+
+<div class="admin-card">
+
+<div class="admin-card-icon">
+👥
+</div>
+
+<h3>
+Student Requests
+</h3>
+
+<p>
+Check book requests submitted by students.
+</p>
+
+<button onclick="adminMessage('Student Requests')">
+View Requests
+</button>
+
+</div>
+
+
+<div class="admin-card">
+
+<div class="admin-card-icon">
+🔄
+</div>
+
+<h3>
+Borrow & Return
+</h3>
+
+<p>
+Track borrowed books and return dates.
+</p>
+
+<button onclick="adminMessage('Borrow & Return')">
+Manage
+</button>
+
+</div>
+
+
+<div class="admin-card">
+
+<div class="admin-card-icon">
+⚙️
+</div>
+
+<h3>
+Library Settings
+</h3>
+
+<p>
+Manage library settings and administrator options.
+</p>
+
+<button onclick="adminMessage('Settings')">
+Settings
+</button>
+
+</div>
+
+</div>
+
+<br>
+
+<button
+class="full-btn"
+onclick="closeAdminPanel()"
+style="max-width:200px;">
+
+Close Admin Panel
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section class="section" id="contact">
+
+<div class="section-inner">
+
+<div class="section-title">
+
+<span>Get in Touch</span>
+
+<h2>Contact Library</h2>
+
+</div>
+
+
+<div class="contact">
+
+
+<div class="contact-card">
+
+<h3>
+📚 Mama Qadeer Memorial Library
+</h3>
+
+<div class="contact-item">
+
+<strong>
+Organization
+</strong>
+
+<p>
+Baloch Students Council UOL
+</p>
+
+</div>
+
+
+<div class="contact-item">
+
+<strong>
+Location
+</strong>
+
+<p>
+University of Lahore
+</p>
+
+</div>
+
+
+<div class="contact-item">
+
+<strong>
+Purpose
+</strong>
+
+<p>
+Education and knowledge sharing
+</p>
+
+</div>
+
+</div>
+
+
+<div class="contact-card">
+
+<h3>
+Send a Message
+</h3>
+
+<br>
+
+<input
+class="input"
+placeholder="Your name"
+>
+
+<input
+class="input"
+type="email"
+placeholder="Your email"
+>
+
+<textarea
+class="input"
+rows="5"
+placeholder="Your message"
+></textarea>
+
+<button
+class="full-btn"
+onclick="alert('Contact system will be connected later.')">
+
+Send Message
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="footer-inner">
+
+
+<div>
+
+<h3>
+Mama Qadeer Memorial Library
+</h3>
+
+<p>
+A student-focused library initiative dedicated to
+education, reading and knowledge sharing.
+</p>
+
+</div>
+
+
+<div>
+
+<h3>
+Quick Links
+</h3>
+
+<p>
+<a href="#home">Home</a>
+</p>
+
+<p>
+<a href="#library">Library</a>
+</p>
+
+<p>
+<a href="#about">About</a>
+</p>
+
+<p>
+<a href="#contact">Contact</a>
+</p>
+
+</div>
+
+
+<div>
+
+<h3>
+Library
+</h3>
+
+<p>Books</p>
+
+<p>Book Requests</p>
+
+<p>Student Login</p>
+
+<p>Admin Panel</p>
+
+</div>
+
+
+</div>
+
+
+<div class="copyright">
+
+©️ 2026 Mama Qadeer Memorial Library · Baloch Students Council UOL
+
+</div>
+
+
+<div class="made-by">
+
+Made by <strong>Sultan Shoaib</strong>
+
+</div>
+
+</footer>
+
+
+<!-- ================= MOBILE NAV ================= -->
+
+<div class="mobile-nav">
+
+<a href="#home">
+
+<span>🏠</span>
+
+Home
+
+</a>
+
+
+<a href="#library">
+
+<span>📚</span>
+
+Library
+
+</a>
+
+
+<a href="#about">
+
+<span>ℹ️</span>
+
+About
+
+</a>
+
+
+<a href="#login">
+
+<span>👤</span>
+
+Login
+
+</a>
+
+</div>
+
+
+<!-- ================= BOOK MODAL ================= -->
+
+<div
+class="modal"
+id="bookModal">
+
+<div class="modal-box">
+
+<div
+class="close"
+onclick="closeModal()">
+
+×
+
+</div>
+
+
+<h2 id="modalTitle">
+Book Title
+</h2>
+
+
+<p id="modalAuthor"></p>
+
+<br>
+
+<p id="modalCategory"></p>
+
+<br>
+
+<p id="modalDescription"></p>
+
+<br>
+
+<button
+class="full-btn"
+onclick="requestDemo()">
+
+Request This Book
+
+</button>
+
+</div>
 
 </div>
 
 
 <script>
 
-/* ================= DEMO BOOKS ================= */
+/* ================= BOOK DATA ================= */
 
 const demoBooks = [
 
-  {
-    id:1,
-    title:"Principles of Economics",
-    author:"N. Gregory Mankiw",
-    category:"Economics",
-    description:"An introductory economics book covering fundamental economic concepts."
-  },
+{
+id:1,
+title:"Principles of Economics",
+author:"N. Gregory Mankiw",
+category:"Economics",
+description:"An introductory economics book covering fundamental economic concepts."
+},
 
-  {
-    id:2,
-    title:"Introduction to Finance",
-    author:"Sample Author",
-    category:"Finance",
-    description:"Basic concepts of finance and financial decision making."
-  },
+{
+id:2,
+title:"Introduction to Finance",
+author:"Sample Author",
+category:"Finance",
+description:"Basic concepts of finance and financial decision making."
+},
 
-  {
-    id:3,
-    title:"Business Management",
-    author:"Sample Author",
-    category:"Business",
-    description:"A basic introduction to management and business organizations."
-  },
+{
+id:3,
+title:"Business Management",
+author:"Sample Author",
+category:"Business",
+description:"A basic introduction to management and business organizations."
+},
 
-  {
-    id:4,
-    title:"Selected Literature",
-    author:"Various Authors",
-    category:"Literature",
-    description:"A collection of literary works for students and readers."
-  }
+{
+id:4,
+title:"Selected Literature",
+author:"Various Authors",
+category:"Literature",
+description:"A collection of literary works for students and readers."
+}
 
 ];
 
@@ -1323,82 +1884,98 @@ let currentBooks = demoBooks;
 
 function displayBooks(books){
 
-  const container = document.getElementById("books");
+const container =
+document.getElementById("books");
 
-  container.innerHTML = "";
+container.innerHTML = "";
 
-  if(books.length === 0){
+if(books.length === 0){
 
-    container.innerHTML = `
-      <div style="
-        grid-column:1/-1;
-        text-align:center;
-        padding:50px;
-        background:white;
-        border-radius:15px;
-      ">
-        <h3>No books found</h3>
-        <p style="color:#777;margin-top:8px;">
-          Try another search.
-        </p>
-      </div>
-    `;
+container.innerHTML = `
 
-    return;
-  }
+<div style="
+grid-column:1/-1;
+text-align:center;
+padding:50px;
+background:white;
+border-radius:15px;
+">
+
+<h3>No books found</h3>
+
+<p style="
+color:#777;
+margin-top:8px;
+">
+
+Try another search.
+
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
 
 
-  books.forEach(book => {
+books.forEach(book => {
 
-    const div = document.createElement("div");
+const div =
+document.createElement("div");
 
-    div.className = "book";
+div.className = "book";
 
-    div.innerHTML = `
+div.innerHTML = `
 
-      <div class="book-cover">
-        📖
-      </div>
+<div class="book-cover">
+📖
+</div>
 
-      <div class="book-content">
+<div class="book-content">
 
-        <div class="book-category">
-          ${book.category}
-        </div>
+<div class="book-category">
+${book.category}
+</div>
 
-        <h3>
-          ${book.title}
-        </h3>
+<h3>
+${book.title}
+</h3>
 
-        <div class="author">
-          By ${book.author}
-        </div>
+<div class="author">
+By ${book.author}
+</div>
 
-        <div class="book-buttons">
+<div class="book-buttons">
 
-          <button
-            class="book-btn view-btn"
-            onclick="viewBook(${book.id})"
-          >
-            View
-          </button>
+<button
+class="book-btn view-btn"
+onclick="viewBook(${book.id})">
 
-          <button
-            class="book-btn request-btn"
-            onclick="requestDemo()"
-          >
-            Request
-          </button>
+View
 
-        </div>
+</button>
 
-      </div>
 
-    `;
+<button
+class="book-btn request-btn"
+onclick="requestDemo()">
 
-    container.appendChild(div);
+Request
 
-  });
+</button>
+
+</div>
+
+</div>
+
+`;
+
+container.appendChild(div);
+
+});
 
 }
 
@@ -1409,17 +1986,21 @@ document
 .getElementById("search")
 .addEventListener("input",function(){
 
-  const text = this.value.toLowerCase();
+const text =
+this.value.toLowerCase();
 
-  currentBooks = demoBooks.filter(book =>
+currentBooks =
+demoBooks.filter(book =>
 
-    book.title.toLowerCase().includes(text) ||
-    book.author.toLowerCase().includes(text) ||
-    book.category.toLowerCase().includes(text)
+book.title.toLowerCase().includes(text) ||
 
-  );
+book.author.toLowerCase().includes(text) ||
 
-  displayBooks(currentBooks);
+book.category.toLowerCase().includes(text)
+
+);
+
+displayBooks(currentBooks);
 
 });
 
@@ -1428,26 +2009,30 @@ document
 
 function filterCategory(category,element){
 
-  document
-  .querySelectorAll(".category")
-  .forEach(item => item.classList.remove("active"));
+document
+.querySelectorAll(".category")
+.forEach(item =>
+item.classList.remove("active")
+);
 
-  element.classList.add("active");
+element.classList.add("active");
 
 
-  if(category === "All"){
+if(category === "All"){
 
-    currentBooks = demoBooks;
+currentBooks = demoBooks;
 
-  }else{
+}else{
 
-    currentBooks = demoBooks.filter(
-      book => book.category === category
-    );
+currentBooks =
+demoBooks.filter(
+book =>
+book.category === category
+);
 
-  }
+}
 
-  displayBooks(currentBooks);
+displayBooks(currentBooks);
 
 }
 
@@ -1456,27 +2041,37 @@ function filterCategory(category,element){
 
 function viewBook(id){
 
-  const book = demoBooks.find(
-    book => book.id === id
-  );
+const book =
+demoBooks.find(
+book => book.id === id
+);
 
-  if(!book) return;
+if(!book) return;
 
-  document.getElementById("modalTitle").textContent =
-    book.title;
 
-  document.getElementById("modalAuthor").textContent =
-    "Author: " + book.author;
+document.getElementById("modalTitle")
+.textContent =
+book.title;
 
-  document.getElementById("modalCategory").textContent =
-    "Category: " + book.category;
 
-  document.getElementById("modalDescription").textContent =
-    book.description;
+document.getElementById("modalAuthor")
+.textContent =
+"Author: " + book.author;
 
-  document
-    .getElementById("bookModal")
-    .classList.add("show");
+
+document.getElementById("modalCategory")
+.textContent =
+"Category: " + book.category;
+
+
+document.getElementById("modalDescription")
+.textContent =
+book.description;
+
+
+document
+.getElementById("bookModal")
+.classList.add("show");
 
 }
 
@@ -1485,31 +2080,96 @@ function viewBook(id){
 
 function closeModal(){
 
-  document
-    .getElementById("bookModal")
-    .classList.remove("show");
+document
+.getElementById("bookModal")
+.classList.remove("show");
 
 }
 
 
-/* ================= REQUEST ================= */
+/* ================= BOOK REQUEST ================= */
 
 function requestDemo(){
 
-  alert(
-    "Book request system will be connected later."
-  );
+alert(
+"Book request system will be connected later."
+);
 
 }
 
 
-/* ================= LOGIN ================= */
+/* ================= STUDENT LOGIN ================= */
 
-function demoLogin(){
+function studentLogin(){
 
-  alert(
-    "Student/Admin login will be connected later."
-  );
+alert(
+"Student login will be connected with Supabase later."
+);
+
+}
+
+
+/* ================= ADMIN LOGIN ================= */
+
+function openAdminPanel(){
+
+const email =
+document.getElementById("adminEmail").value.trim();
+
+const password =
+document.getElementById("adminPassword").value.trim();
+
+
+if(!email || !password){
+
+alert(
+"Please enter admin email and password."
+);
+
+return;
+
+}
+
+
+/*
+DEMO ONLY
+
+Real authentication will be connected
+with Supabase Auth later.
+
+*/
+
+document
+.getElementById("adminDashboard")
+.style.display = "block";
+
+
+document
+.getElementById("adminDashboard")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+/* ================= ADMIN PANEL ================= */
+
+function closeAdminPanel(){
+
+document
+.getElementById("adminDashboard")
+.style.display = "none";
+
+}
+
+
+function adminMessage(section){
+
+alert(
+section +
+" section will be connected with the library database later."
+);
 
 }
 
