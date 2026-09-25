@@ -2156,7 +2156,30 @@ behavior:"smooth"
 
 /* ================= ADMIN PANEL ================= */
 
-function closeAdminPanel(){
+async function openAdminPanel(){
+  const email = document.getElementById("adminEmail").value.trim();
+  const password = document.getElementById("adminPassword").value;
+
+  if(!email || !password){
+    alert("Please enter admin email and password.");
+    return;
+  }
+
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
+    email: email,
+    password: password
+  });
+
+  if(error){
+    alert("Login failed: " + error.message);
+    return;
+  }
+
+  document.getElementById("adminDashboard").style.display = "block";
+  document.getElementById("adminDashboard").scrollIntoView({
+    behavior: "smooth"
+  });
+}
 
 document
 .getElementById("adminDashboard")
