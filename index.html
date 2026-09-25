@@ -892,6 +892,7 @@ footer a{
 }
 
 </style>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
@@ -2179,6 +2180,14 @@ section +
 displayBooks(demoBooks);
 
 </script>
+<script>
+const SUPABASE_URL = "https://nrnfgitjcbsywtljikol.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_BreVMKGxz_0lOll7Wya-dQ_Z23O6OXi";
 
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
+</script>
 </body>
 </html>
