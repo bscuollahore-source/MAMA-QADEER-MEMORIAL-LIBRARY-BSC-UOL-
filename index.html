@@ -2122,8 +2122,13 @@ async function studentLogin(){
     return;
   }
 
- document.getElementById("studentDashboard").style.display = "block";
+ const dashboard = document.getElementById("studentDashboard");
 
+dashboard.style.display = "block";
+dashboard.style.visibility = "visible";
+dashboard.style.opacity = "1";
+
+dashboard.scrollIntoView({ behavior: "smooth", block: "start" });
 document.getElementById("studentDashboard")
   .scrollIntoView({behavior:"smooth"});
 }
