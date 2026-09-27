@@ -1258,12 +1258,12 @@ placeholder="Password"
 >
 <button
 class="full-btn"
-onclick="studentLogin()">
+onclick="studentSignup()"
+style="margin-top:10px;background:#f1c75b;color:#32104f;">
 
-Login
+Create Student Account
 
 </button>
-
 </div>
 
 
@@ -2104,22 +2104,18 @@ alert(
 
 async function studentLogin(){
 
-  const email =
-    document.getElementById("studentEmail").value.trim();
-
-  const password =
-    document.getElementById("studentPassword").value;
+  const email = document.getElementById("studentEmail").value.trim();
+  const password = document.getElementById("studentPassword").value;
 
   if(!email || !password){
-    alert("Please enter your email and password.");
+    alert("Please enter your student email and password.");
     return;
   }
 
-  const { data, error } =
-    await supabaseClient.auth.signInWithPassword({
-      email: email,
-      password: password
-    });
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
+    email: email,
+    password: password
+  });
 
   if(error){
     alert("Login failed: " + error.message);
@@ -2127,9 +2123,40 @@ async function studentLogin(){
   }
 
   alert("Student login successful!");
-
 }
 
+
+/* ================= STUDENT SIGN UP ================= */
+
+async function studentSignup(){
+
+  const email = document.getElementById("studentEmail").value.trim();
+  const password = document.getElementById("studentPassword").value;
+
+  if(!email || !password){
+    alert("Please enter your student email and password.");
+    return;
+  }
+
+  if(password.length < 6){
+    alert("Password must be at least 6 characters.");
+    return;
+  }
+
+  const { data, error } = await supabaseClient.auth.signUp({
+    email: email,
+    password: password
+  });
+
+  if(error){
+    alert("Account creation failed: " + error.message);
+    return;
+  }
+
+  alert("Student account created successfully. You can now login.");
+}
+
+  
 /* ================= ADMIN LOGIN ================= */
 
 function openAdminPanel(){
