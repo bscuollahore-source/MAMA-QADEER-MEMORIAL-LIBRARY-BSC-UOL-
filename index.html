@@ -2141,33 +2141,24 @@ document.getElementById("studentDashboard")
 
 /* ================= STUDENT SIGN UP ================= */
 
-async function studentSignup(){
+create or replace function public.handle_new_student()
+returns trigger
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  insert into public.student_profiles (id, email, approved)
+  values (new.id, new.email, false);
 
-  const email = document.getElementById("studentEmail").value.trim();
-  const password = document.getElementById("studentPassword").value;
+  return new;
+end;
+$$;
 
-  if(!email || !password){
-    alert("Please enter your student email and password.");
-    return;
-  }
-
-  if(password.length < 6){
-    alert("Password must be at least 6 characters.");
-    return;
-  }
-
-  const { data, error } = await supabaseClient.auth.signUp({
-    email: email,
-    password: password
-  });
-
-  if(error){
-    alert("Account creation failed: " + error.message);
-    return;
-  }
-
-  alert("Student account created successfully. You can now login.");
-}
+create trigger on_auth_user_created_student
+after insert on auth.users
+for each row
+execute procedure public.handle_new_student();
 
   
 /* ================= ADMIN LOGIN ================= */
