@@ -1561,7 +1561,18 @@ Close Admin Panel
 </button>
 
 </div>
+<!-- PENDING STUDENTS -->
+<div class="admin-card" style="margin-top:30px;">
+  <h3>Pending Student Approvals</h3>
+  <p>Students waiting for admin approval.</p>
 
+  <button class="full-btn" onclick="loadPendingStudents()">
+    View Pending Students
+  </button>
+
+  <div id="pendingStudentsList" style="margin-top:20px;">
+  </div>
+</div>
 </section>
 
 
@@ -2325,5 +2336,59 @@ const supabaseClient = window.supabase.createClient(
   </div>
 
 </div>
+  <script>
+async function loadPendingStudents(){
+
+  const list = document.getElementById("pendingStudentsList");
+
+  list.innerHTML = "Loading students...";
+
+  const { data, error } = await supabaseClient
+    .from("student_profiles")
+    .select("id, email, created_at, approved")
+    .eq("approved", false)
+    .order("created_at", { ascending: false });
+
+  if(error){
+    list.innerHTML = "Could not load students: " + error.message;
+    return;
+  }
+
+  if(!data || data.length === 0){
+    list.innerHTML = "<p>No pending students.</p>";
+    return;
+  }
+
+  list.innerHTML = data.map(student => `
+    <div style="padding:15px;margin-bottom:12px;border:1px solid #ddd;border-radius:10px;">
+      <strong>${student.email}</strong>
+      <br>
+      <small>Pending Approval</small>
+      <br><br>
+      <button
+        class="full-btn"
+        onclick="approveStudent('${student.id}')">
+        Approve Student
+      </button>
+    </div>
+  `).join("");
+}
+    async function approveStudent(studentId){
+
+  const { error } = await supabaseClient
+    .from("student_profiles")
+    .update({ approved: true })
+    .eq("id", studentId);
+
+  if(error){
+    alert("Approval failed: " + error.message);
+    return;
+  }
+
+  alert("Student approved successfully.");
+
+  loadPendingStudents();
+}
+</script>
 </body>
 </html>
