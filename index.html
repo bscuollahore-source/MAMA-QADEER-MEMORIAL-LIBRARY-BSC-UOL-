@@ -2122,7 +2122,10 @@ async function studentLogin(){
     return;
   }
 
-  alert("Student login successful!");
+ document.getElementById("studentDashboard").style.display = "block";
+
+document.getElementById("studentDashboard")
+  .scrollIntoView({behavior:"smooth"});
 }
 
 
