@@ -2152,24 +2152,6 @@ document.getElementById("studentDashboard")
 
 /* ================= STUDENT SIGN UP ================= */
 
-create or replace function public.handle_new_student()
-returns trigger
-language plpgsql
-security definer
-set search_path = public
-as $$
-begin
-  insert into public.student_profiles (id, email, approved)
-  values (new.id, new.email, false);
-
-  return new;
-end;
-$$;
-
-create trigger on_auth_user_created_student
-after insert on auth.users
-for each row
-execute procedure public.handle_new_student();
 
   
 /* ================= ADMIN LOGIN ================= */
@@ -2181,7 +2163,6 @@ document.getElementById("adminEmail").value.trim();
 
 const password =
 document.getElementById("adminPassword").value.trim();
-
 
 if(!email || !password){
 
