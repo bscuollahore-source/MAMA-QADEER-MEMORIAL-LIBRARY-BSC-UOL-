@@ -1245,16 +1245,17 @@ Login to request books and manage your library activity.
 
 <input
 class="input"
+id="studentEmail"
 type="email"
 placeholder="Student email"
 >
 
 <input
 class="input"
+id="studentPassword"
 type="password"
 placeholder="Password"
 >
-
 <button
 class="full-btn"
 onclick="studentLogin()">
@@ -2101,14 +2102,33 @@ alert(
 
 /* ================= STUDENT LOGIN ================= */
 
-function studentLogin(){
+async function studentLogin(){
 
-alert(
-"Student login will be connected with Supabase later."
-);
+  const email =
+    document.getElementById("studentEmail").value.trim();
+
+  const password =
+    document.getElementById("studentPassword").value;
+
+  if(!email || !password){
+    alert("Please enter your email and password.");
+    return;
+  }
+
+  const { data, error } =
+    await supabaseClient.auth.signInWithPassword({
+      email: email,
+      password: password
+    });
+
+  if(error){
+    alert("Login failed: " + error.message);
+    return;
+  }
+
+  alert("Student login successful!");
 
 }
-
 
 /* ================= ADMIN LOGIN ================= */
 
