@@ -2128,6 +2128,7 @@ async function studentLogin(){
     return;
   }
 
+  // Login
   const { data, error } = await supabaseClient.auth.signInWithPassword({
     email: email,
     password: password
@@ -2138,15 +2139,31 @@ async function studentLogin(){
     return;
   }
 
- const dashboard = document.getElementById("studentDashboard");
+  // Check student approval
+  const { data: profile, error: profileError } = await supabaseClient
+    .from("student_profiles")
+    .select("approved")
+    .eq("id", data.user.id)
+    .single();
 
-dashboard.style.display = "block";
-dashboard.style.visibility = "visible";
-dashboard.style.opacity = "1";
+  if(profileError){
+    await supabaseClient.auth.signOut();
+    alert("Unable to check your approval status.");
+    return;
+  }
 
-dashboard.scrollIntoView({ behavior: "smooth", block: "start" });
-document.getElementById("studentDashboard")
-  .scrollIntoView({behavior:"smooth"});
+  // Student is still pending
+  if(profile.approved !== true){
+    await supabaseClient.auth.signOut();
+    alert("Your account is waiting for admin approval.");
+    return;
+  }
+
+  // Approved student
+  document.getElementById("studentDashboard").style.display = "block";
+
+  document.getElementById("studentDashboard")
+    .scrollIntoView({behavior:"smooth"});
 }
 
 
