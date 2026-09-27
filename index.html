@@ -2257,5 +2257,69 @@ const supabaseClient = window.supabase.createClient(
   SUPABASE_ANON_KEY
 );
 </script>
+  <!-- STUDENT DASHBOARD -->
+
+<div id="studentDashboard" style="display:none;">
+
+  <div class="dashboard-box">
+
+    <div class="dashboard-header">
+      <div>
+        <h2>Student Dashboard</h2>
+        <p>Welcome to Mama Qadeer Memorial Library</p>
+      </div>
+
+      <button onclick="studentLogout()" class="logout-btn">
+        Logout
+      </button>
+    </div>
+
+    <div class="student-cards">
+
+      <div class="student-card">
+        <div class="student-icon">📚</div>
+        <h3>Available Books</h3>
+        <p>Explore books available in the library.</p>
+        <button onclick="studentSection('books')">
+          View Books
+        </button>
+      </div>
+
+      <div class="student-card">
+        <div class="student-icon">🔎</div>
+        <h3>Search Books</h3>
+        <p>Find books by title or author.</p>
+        <button onclick="studentSection('search')">
+          Search Books
+        </button>
+      </div>
+
+      <div class="student-card">
+        <div class="student-icon">📋</div>
+        <h3>My Requests</h3>
+        <p>Check your book requests.</p>
+        <button onclick="studentSection('requests')">
+          My Requests
+        </button>
+      </div>
+
+      <div class="student-card">
+        <div class="student-icon">📖</div>
+        <h3>Borrowed Books</h3>
+        <p>View your borrowed books.</p>
+        <button onclick="studentSection('borrowed')">
+          View Books
+        </button>
+      </div>
+
+    </div>
+
+    <div id="studentSectionMessage" class="student-message">
+      Select an option above to continue.
+    </div>
+
+  </div>
+
+</div>
 </body>
 </html>
